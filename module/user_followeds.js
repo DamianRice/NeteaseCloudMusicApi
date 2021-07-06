@@ -3,8 +3,10 @@
 module.exports = (query, request) => {
   const data = {
     userId: query.uid,
-    time: query.lasttime || -1,
+    time: '0',
     limit: query.limit || 30,
+    offset: query.offset || 0,
+    getcounts: 'true',
   }
   return request(
     'POST',
@@ -16,6 +18,6 @@ module.exports = (query, request) => {
       proxy: query.proxy,
       url: '/api/user/getfolloweds',
       realIP: query.realIP,
-    }
+    },
   )
 }
